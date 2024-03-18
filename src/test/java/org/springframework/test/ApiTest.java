@@ -1,8 +1,8 @@
 package org.springframework.test;
 
 import org.junit.Test;
-import org.springframework.BeanDefinition;
-import org.springframework.BeanFactory;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.test.bean.UserService;
 
 /**
@@ -16,15 +16,18 @@ public class ApiTest {
     public void test_beanFactory() {
 
         // init beanFactory
-        BeanFactory beanFactory = new BeanFactory();
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
-        // set beanDefinition
-        BeanDefinition beanDefinition = new BeanDefinition(new UserService());
+        // insert beanDef
+        BeanDefinition beanDefinition = new BeanDefinition(UserService.class);
         beanFactory.registerBeanDefinition("userService", beanDefinition);
 
-        // get bean
-        UserService userService = (UserService) beanFactory.getBean("userService");
-        userService.queryUserInfo();
+        // get beanDef
+        UserService bean = (UserService) beanFactory.getBean("userService");
+        bean.queryUserInfo();
+
+        UserService bean2 = (UserService) beanFactory.getBean("userService");
+        bean2.queryUserInfo();
 
     }
 
