@@ -18,16 +18,13 @@ public class ApiTest {
         // init beanFactory
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
-        // insert beanDef
+        // insert bean
         BeanDefinition beanDefinition = new BeanDefinition(UserService.class);
         beanFactory.registerBeanDefinition("userService", beanDefinition);
 
-        // get beanDef
-        UserService bean = (UserService) beanFactory.getBean("userService");
-        bean.queryUserInfo();
-
-        UserService bean2 = (UserService) beanFactory.getBean("userService");
-        bean2.queryUserInfo();
+        // get bean
+        UserService userService = (UserService) beanFactory.getBean("userService","mdzy");
+        userService.queryUserInfo();
 
     }
 
