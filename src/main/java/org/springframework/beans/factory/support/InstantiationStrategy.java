@@ -7,7 +7,7 @@ import java.lang.reflect.Constructor;
 
 /**
  * @author cjd
- * @description
+ * @description 实例化策略接口
  * @create 2024-03-18
  */
 public interface InstantiationStrategy {
